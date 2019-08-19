@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//en" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+ </head>
+<title> </title>
+<script type="text/javascript"> //자바스크립트 선언문
+ //<!CDATA[
+     var color=["white","aqua","red"];
+     var i=0;
+     function colorChange(){
+         i++;
+         if(i>=color.length)i=0;
+         var bodyTag=document.getElementsByTagName("body")[0];
+         bodyTag.style.backgroundColor=color[i];
+     }
+     window.onload=function(){
+         var btn2=document.getElementById("btn4");
+         btn2.onclick=function(){colorChange();}
+
+     }
+ //]]>
+</script>  <!-- //script -->
+ <body>
+  <p>
+      <button onclick="colorChange();">버튼1</button>
+  </p>
+ </body>
+</html>
