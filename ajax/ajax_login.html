@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//en" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+<title> </title>
+<script type="text/javascript"> //자바스크립트 선언문
+
+ //<!CDATA[
+ function submit_check(myForm){
+         var reg1=/^[가-힣]{2,5}$/;
+         var reg2=/^\w{5,12}@[a-z]{2,10}[\.][a-z]{2,3}[\.]?[a-z]{0,2}$/;
+         
+         var name=myForm.user_name;
+         var email=myForm.user_email;
+
+         var result1=reg1.test(name.value);
+         var result2=reg2.test(email.value);
+         if(!result1){
+             alert("name error");
+             name.value="";
+             name.focus();
+             return false;
+         }
+         if(!result2){
+             alert("email error");
+             email.value="";
+             email.focus();
+             return false;
+         }
+        }
+    $(function(){
+        $("#member").on("submit",function(){
+            var nform=$(this).serialize();
+            var tform={
+                user_email:'값',
+                user_id='값',
+                user_name='값',
+                user_pwd='값'
+            };
+            $.ajax({
+                url:"writeSql.php",
+                type:"tform",
+                data:nform,
+                success:function(result){
+                    $("#txt1").text(result);
+                }
+            });
+            return false;
+        });
+    });
+ //]]>
+</script>  <!-- //script -->
+</head>
+ <body>
+    <form method="POST" name="member", id="member" >
+    <fieldset>
+        <legend>Sign in</legend>
+        <p>
+              <label for="user_id">아이디　</label>
+              <input type="text" name="user_id" id="user_id"/>     
+        </p>
+        <p>
+                <label for="user_pwd">비밀번호</label>
+                <input type="text" name="user_pwd" id="user_pwd"/>     
+        </p>
+        <p>
+                <label for="user_name">이름　　</label>
+                <input type="text" name="user_name" id="user_name"/>     
+        </p>
+        <p>
+                <label for="user_email">이메일　</label>
+                <input type="text" name="user_email" id="user_email"/>     
+        </p>    
+      
+        <p>
+          <input type="submit" value="회원가입"/>     
+        </p>
+    </fieldset>
+    <h1 id="txt1"></h1>
+ </body>
+</html>
