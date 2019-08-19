@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//en" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+ </head>
+<title> </title>
+<script type="text/javascript"> //자바스크립트 선언문
+ //<!CDATA[
+     function submit_check(myForm){
+         var reg1=/^[가-힣]{2,5}$/;
+         var reg2=/^(010)\d{4}\d{4}$/;
+
+         var name=myForm.user_name;
+         var phone=myForm.user_phone;
+
+         var result1=reg1.test(name.value);
+         var result2=reg2.test(phone.value);
+         if(!result1){
+             alert("이름입력 잘못");
+             name.value="";
+             name.focus();
+             return false;
+         }
+         if(!result2){
+             alert("번호입력 잘못");
+             phone.value="";
+             phone.focus();
+             return false;
+         }
+     }
+ //]]>
+</script>  <!-- //script -->
+ <body>
+  <form action="#",method="post" name="f1"
+  onsubmit="return submit_check(this);" >
+  <fieldset>
+      <legend>Sign in</legend>
+      <p>
+          <label for="user_name">이름</label>
+          <input type="text" name="user_name" id="user_name"/>     
+      </p>
+      <p>
+        <label for="user_phone">번호</label>
+        <input type="text" name="user_phone" id="user_phone"/>     
+      </p>
+      <p>
+        <input type="submit" value="회원가입"/>     
+      </p>
+  </fieldset>
+ </body>
+</html>
