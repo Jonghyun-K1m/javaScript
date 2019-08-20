@@ -4,7 +4,7 @@ $db_host = "localhost";
 
 $db_user = "kjhyun424"; 
 
-$db_passwd = 
+$db_passwd =  "";
 
 $db_name = "kjhyun424";  
 
@@ -36,9 +36,13 @@ mysqli_set_charset($conn,"utf8");
 
 // 테이블에 값 쓰기.
 $sql ="USE member";
+$inputname=$_POST["user_name"];
+$inputid=$_POST["user_id"];
+$inputpwd=$_POST["user_pwd"];
+$inputemail=$_POST["user_email"];
 $sql = "INSERT INTO member (id, name, password, email)
 
-VALUES (user_id, user_name, user_pwd, user_email)";
+VALUES (\"$inputid\",\"$inputname\",\"$inputpwd\",\"$inputemail\")";
 
 if (mysqli_query($conn,$sql)){
 

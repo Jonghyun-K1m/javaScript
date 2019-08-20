@@ -34,15 +34,16 @@
     $(function(){
         $("#member").on("submit",function(){
             var nform=$(this).serialize();
+            console.log(nform);
             var tform={
                 user_email:'값',
-                user_id='값',
-                user_name='값',
-                user_pwd='값'
+                user_id:'값',
+                user_name:'값',
+                user_pwd:'값'
             };
             $.ajax({
-                url:"writeSql.php",
-                type:"tform",
+                url:"writeSql.php", 
+                type:"post",
                 data:nform,
                 success:function(result){
                     $("#txt1").text(result);
