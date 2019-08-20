@@ -40,27 +40,29 @@ $inputname=$_POST["user_name"];
 $inputid=$_POST["user_id"];
 $inputpwd=$_POST["user_pwd"];
 $inputemail=$_POST["user_email"];
-$sql = "INSERT INTO member (id, name, password, email)
 
-VALUES (\"$inputid\",\"$inputname\",\"$inputpwd\",\"$inputemail\")";
-
-if (mysqli_query($conn,$sql)){
-
-echo "테이블에 값 쓰기 완료: $sql<br/>";
-
-} else {
-
-echo "테이블에 값 쓰기 오류: " . mysqli_error($conn);
-
+$sql = "SELECT * FROM member WHERE id=\"$inputid\" ";
+$result = mysqli_query($conn,$sql);
+while( $result_row = mysqli_fetch_array( $result ) ) {  //있으면 짤
+    //if($inputid==$result_row['id'])
+    exit;
+   // echo '<p>' . $result_row['id'] . '</p>';
 }
 
 
+    $sql = "INSERT INTO member (id, name, password, email)
+    VALUES (\"$inputid\",\"$inputname\",\"$inputpwd\",\"$inputemail\")";
+    if (mysqli_query($conn,$sql)){
 
-//mysqli_query($conn,"INSERT INTO (id, name, password, email)
-
-//VALUES ('abcedf', 'abcdef', 'abcdef', 'adbcd@naver.com')");
-
-
+        echo "테이블에 값 쓰기 완료:";
+        
+        //echo "테이블에 값 쓰기 완료: $sql<br/>";
+        
+        } else {
+        
+        echo "테이블에 값 쓰기 오류: " . mysqli_error($conn);
+        
+        }
 
 mysqli_close($conn);
 
