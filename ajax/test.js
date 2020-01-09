@@ -5,5 +5,5 @@ function ajax(data) {
     });    
     oReq.open("GET", "http://www.example.org/getData?data=data");//parameter를 붙여서 보낼수있음. 
     oReq.send();
-    //
+    
    }
